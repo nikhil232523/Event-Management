@@ -1,0 +1,6 @@
+{
+  "name": "Event Manager",
+  "description": "A single-screen, highly polished event management panel for scheduling events, managing attendee lists, and tracking statistics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
