@@ -104,15 +104,23 @@ export default function App() {
   });
 
   // Auto-select first filtered event if selection is invalid or nullified
+  const filterQuery = filter.searchQuery;
+  const filterCategory = filter.category;
+  const filterStatus = filter.status;
+  const filterSortBy = filter.sortBy;
+  const eventsCount = events.length;
+
   useEffect(() => {
     if (filteredEvents.length > 0) {
       if (!selectedEventId || !filteredEvents.some(e => e.id === selectedEventId)) {
         setSelectedEventId(filteredEvents[0].id);
       }
     } else {
-      setSelectedEventId(null);
+      if (selectedEventId !== null) {
+        setSelectedEventId(null);
+      }
     }
-  }, [filteredEvents, selectedEventId]);
+  }, [selectedEventId, filterQuery, filterCategory, filterStatus, filterSortBy, eventsCount]);
 
   // Handler: Add new event
   const handleSaveNewEvent = (newEventData: Omit<Event, 'rsvps'>) => {
