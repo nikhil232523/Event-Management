@@ -8,7 +8,8 @@ export default defineConfig(() => {
   // to prevent blank pages caused by relative paths when accessed without trailing slashes.
   const isGithubActions = !!process.env.GITHUB_ACTIONS;
   const repoName = process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[1] : '';
-  const base = isGithubActions ? `/${repoName}/` : './';
+  const isUserPage = repoName.toLowerCase().endsWith('.github.io');
+  const base = isGithubActions ? (isUserPage ? '/' : `/${repoName}/`) : './';
 
   return {
     base,
